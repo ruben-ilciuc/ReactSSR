@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='theme-color' content='#000000' />
+    <meta name='description' content='React-like BE UI' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+
+    <link rel='icon' type='image/png' href='/favicon.png' />
+    <link rel='shortcut icon' type='image/png' href='/favicon.png' />
+    <link rel='apple-touch-icon' href='/favicon.png' />
+
+    <link rel='stylesheet' href='/styles.css' />
+
+    <title>
+      {{#if title}}
+        {{title}}
+      {{else}}
+        React-like BE UI
+      {{/if}}
+    </title>
+  </head>
+  <body>
+    <div id='root'>
+      {{#if fullWidth}}
+        {{{body}}}
+      {{else}}
+        <div class='flex justify-center items-center p-8 lg:p-10 bg-gray-50'>
+          <div class='card max-w-[370px] w-full'>
+            {{{body}}}
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </body>
+</html>
