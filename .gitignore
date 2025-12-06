@@ -54,3 +54,22 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Security and secrets
+*.pem
+*.key
+*.cert
+*.crt
+secrets/
+.secrets
+*.secret
+.env.*.local
+
+# Session storage
+sessions/
+*.session
+
+# Backup files
+*.bak
+*.backup
+*~
