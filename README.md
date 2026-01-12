@@ -523,21 +523,21 @@ export interface ButtonProps extends VariantProps<typeof buttonVariants> {
   className?: string;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
-  onclick?: string;
+  onClick?: string;
   [key: string]: unknown; // Allow additional HTML attributes
 }
 
 /**
  * Extracts HTML attributes from button props
  */
-export function getButtonAttributes(
+function getButtonAttributes(
   props: ButtonProps,
 ): Record<string, string | boolean> {
-  const { variant, size, className, children, onclick, ...attributes } = props;
+  const { variant, size, className, children, onClick, ...attributes } = props;
 
   return {
     ...attributes,
-    ...(onclick && { onclick }),
+    ...(onClick && { onclick: onClick }), // Convert camelCase to lowercase for HTML
     ...(props.disabled && { disabled: true }),
     ...(props.type && { type: props.type }),
   };
@@ -562,7 +562,7 @@ export function createButton(props: ButtonProps): string {
   return `<button class="${classes}" ${attributesStringified}>${content}</button>`;
 }
 
-export { buttonVariants };
+export { buttonVariants, createButton };
 ```
 
 **Key concepts:**
@@ -615,6 +615,9 @@ export function registerHandlebarsHelpers(): void {
       return new Handlebars.SafeString(html);
     },
   );
+
+  // Register additional component helpers (card, badge, avatar, etc.)
+  // See the GitHub repository for complete implementations
 
   // Conditional helpers for template logic
   Handlebars.registerHelper('eq', (a: unknown, b: unknown) => a === b);
@@ -714,7 +717,7 @@ Create the sign-in page at `views/sign-in.hbs`:
         variant='outline'
         size='lg'
         type='button'
-        onclick="fillCredentials('admin@example.com', 'password123')"
+        onClick="fillCredentials('admin@example.com', 'password123')"
         className='flex-1 hover-lift'
       }}
         Admin
@@ -724,7 +727,7 @@ Create the sign-in page at `views/sign-in.hbs`:
         variant='outline'
         size='lg'
         type='button'
-        onclick="fillCredentials('user@example.com', 'password123')"
+        onClick="fillCredentials('user@example.com', 'password123')"
         className='flex-1 hover-lift'
       }}
         User
@@ -1162,14 +1165,18 @@ npm install @fastify/secure-session
 ```typescript
 import fastifySecureSession from '@fastify/secure-session';
 
+// Generate a secret key (32 bytes recommended)
+const secretKey = process.env.SESSION_SECRET || 'your-secret-key-here-32-chars-min';
+const secret = Buffer.from(secretKey, 'utf-8');
+
 await app.register(fastifySecureSession, {
-  secret: process.env.SESSION_SECRET, // 32-byte secret
-  salt: process.env.SESSION_SALT,     // 16-byte salt
+  key: secret, // 32-byte key for encryption
   cookie: {
     path: '/',
     httpOnly: true,  // Prevent XSS
-    secure: true,    // HTTPS only
+    secure: process.env.NODE_ENV === 'production', // HTTPS only in production
     sameSite: 'lax', // CSRF protection
+    maxAge: 60 * 60 * 24 * 7, // 7 days
   },
 });
 ```
@@ -1314,7 +1321,7 @@ Instead of relying on heavy client-side frameworks for every interaction, you ha
 
 **Official Documentation:**
 - [NestJS Documentation](https://docs.nestjs.com/) – Comprehensive guide to NestJS
-- [Fastify Documentation](https://www.fastify.io/) – High-performance web framework
+- [Fastify Documentation](https://fastify.dev/) – High-performance web framework
 - [Handlebars Guide](https://handlebarsjs.com/guide/) – Templating language reference
 - [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS framework
 - [CVA Documentation](https://cva.style/docs) – Class Variance Authority

@@ -19,7 +19,8 @@ async function bootstrap() {
 
   // 0. Register secure session plugin (must be before other plugins)
   // Generate a secret key for session encryption (in production, use environment variable)
-  const secretKey = process.env.SESSION_SECRET || 'a'.repeat(32);
+  const secretKey =
+    process.env.SESSION_SECRET || 'your-secret-key-here-32-chars-min';
   const secret = Buffer.from(secretKey, 'utf-8');
 
   await app.register(fastifySecureSession, {

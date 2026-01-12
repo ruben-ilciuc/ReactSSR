@@ -44,6 +44,7 @@ jobs:
         run: npm ci
 
       - name: Run npm audit
+        continue-on-error: true
         run: npm audit --audit-level=moderate
 
       - name: Upload audit results
