@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn, createAttributesStringified } from 'src/ui/utils/utils';
+import { cn, createAttributesStringified } from '../utils/utils';
 
 /**
  * KPI component variants using Class Variance Authority (CVA)
@@ -205,4 +206,5 @@ function createKPI(props: KPIProps): string {
   `.trim();
 }
 
-export { kpiVariants, createKPI };
+export { createKPI, kpiVariants };
+

@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn, createAttributesStringified } from 'src/ui/utils/utils';
+import { cn, createAttributesStringified } from '../utils/utils';
 
 /**
  * Avatar component variants using Class Variance Authority (CVA)
@@ -99,3 +100,4 @@ function createAvatar(props: AvatarProps): string {
 }
 
 export { avatarVariants, createAvatar };
+

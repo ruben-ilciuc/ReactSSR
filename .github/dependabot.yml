@@ -9,7 +9,7 @@ updates:
       time: '09:00'
     open-pull-requests-limit: 10
     reviewers:
-      - 'GrapeKode'
+      - 'ruben-ilciuc'
     labels:
       - 'dependencies'
       - 'automated'
@@ -39,7 +39,7 @@ updates:
     schedule:
       interval: 'monthly'
     reviewers:
-      - 'GrapeKode'
+      - 'ruben-ilciuc'
     labels:
       - 'github-actions'
       - 'automated'
