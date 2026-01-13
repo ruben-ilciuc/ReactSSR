@@ -10,7 +10,7 @@ This article presents a solution: **a React-like component system built entirely
 
 ### What You'll Learn
 
-- How to create reusable, type-safe UI components on the backend
+- How to create reusable UI components on the backend
 - How to use Class Variance Authority (CVA) for component variants in server-side templates
 - How to integrate Tailwind CSS v4 with NestJS and Fastify
 - How to build an interactive dashboard with SSR
@@ -96,7 +96,6 @@ With our approach, the same buttons become:
 This gives you:
 
 - **Single source of truth** for component styles
-- **Type-safe props** via TypeScript
 - **Variant management** using CVA (just like shadcn/ui)
 - **Easy refactoring** when design changes
 - **Familiar API** if you've used React
@@ -573,7 +572,7 @@ export { buttonVariants, createButton };
 4. **Composability** – Can be extended with custom classes via `className` prop
 
 > [!TIP]
-> You can create additional components following this same pattern: `input`, `card`, `badge`, `avatar`, `kpi`, etc. Check the [GitHub repository](https://github.com/GrapeKode/ReactSSR) for complete examples.
+> You can create additional components following this same pattern: `input`, `card`, `badge`, `avatar`, `kpi`, etc. Check the [GitHub repository](https://github.com/ruben-ilciuc/ReactSSR) for complete examples.
 
 ### Step 8: Register Handlebars Helpers
 
@@ -1327,7 +1326,7 @@ Instead of relying on heavy client-side frameworks for every interaction, you ha
 - [CVA Documentation](https://cva.style/docs) – Class Variance Authority
 
 **Example Repository:**
-- [ReactSSR GitHub Repository](https://github.com/GrapeKode/ReactSSR) – Complete source code with examples
+- [ReactSSR GitHub Repository](https://github.com/ruben-ilciuc/ReactSSR) – Complete source code with examples
 
 ---
 
@@ -1342,7 +1341,7 @@ This approach was inspired by:
 ---
 
 **Thank you for reading!** If you found this helpful, consider:
-- ⭐ Starring the [GitHub repository](https://github.com/GrapeKode/ReactSSR)
+- ⭐ Starring the [GitHub repository](https://github.com/ruben-ilciuc/ReactSSR)
 - 💬 Sharing your experience and improvements
 - 🐛 Reporting issues or suggesting enhancements
 
