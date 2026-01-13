@@ -1,4 +1,5 @@
-import { cva, VariantProps } from 'class-variance-authority';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn, createAttributesStringified } from 'src/ui/utils/utils';
 
 /**
